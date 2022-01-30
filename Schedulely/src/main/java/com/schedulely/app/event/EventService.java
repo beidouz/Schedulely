@@ -25,7 +25,7 @@ public class EventService {
 
     }
 
-    public Event getEvent(Long id){
+    public Event getEventById(Long id){
 
         for (int i = 0; i < this.events.size(); ++i) {
             if (this.events.get(i).getId().equals(id)) {

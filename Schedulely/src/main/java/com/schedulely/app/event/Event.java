@@ -2,10 +2,14 @@ package com.schedulely.app.event;
 
 import com.schedulely.app.availability.Availability;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.HashMap;
 import java.util.List;
 
+//@Entity
 public class Event {
+//    @Id
     private Long id; // generated unique ID
     private String title;
     private String description;

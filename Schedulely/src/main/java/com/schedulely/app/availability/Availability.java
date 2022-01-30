@@ -1,9 +1,14 @@
 package com.schedulely.app.availability;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Availability {
-    private Long id;
+
+    @Id
+    private Long id;  // primary key
     private String name;
     private LocalDate time;
     //private Long eventId;
