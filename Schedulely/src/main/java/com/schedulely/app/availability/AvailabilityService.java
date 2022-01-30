@@ -1,44 +1,40 @@
 package com.schedulely.app.availability;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class AvailabilityService {
 
-    private List<Availability> availabilities = new ArrayList<>(Arrays.asList(
-            new Availability(1L, "BeidouZhang", LocalDate.now()),
-            new Availability(2L, "Jay chou", LocalDate.now()),
-            new Availability(3L, "Your mother", LocalDate.now())
-    ));
+    private final AvailabilityRepository availabilityRepository;
+
+    @Autowired
+    public AvailabilityService(AvailabilityRepository availabilityRepository) {
+        this.availabilityRepository =  availabilityRepository;
+    }
 
     public List<Availability> getAllAvailabilities(){
-        return getAllAvailabilities();
+        List<Availability> availabilities = new ArrayList<>();
+        availabilityRepository.findAll()
+                .forEach(availabilities::add);
+        return availabilities;
     }
 
     public Availability getAvailabilityById(Long id) {
-        return availabilities.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+        return availabilityRepository.findById(id).orElse(null); //can also do .orElseThrow(() -> new EntityNotFoundException(id));
     }
 
     public void addAvalability(Availability availability) {
-        availabilities.add(availability);
+        availabilityRepository.save(availability);
     }
 
     public void updateAvailabilityById(Long id, Availability availability) {
-        for (int i = 0; i < availabilities.size(); ++i) {
-            Availability a = availabilities.get(i);
-            if (a.getId().equals(id)) {
-                availabilities.set(i, availability);
-                return;
-            }
-        }
+        availabilityRepository.save(availability); //save does both post and update
     }
 
-    public void removeAvailability(Long id) {
-        availabilities.removeIf(t -> t.getId().equals(id));
+    public void removeAvailabilityById(Long id) {
+        availabilityRepository.deleteById(id);
     }
 }

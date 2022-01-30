@@ -39,7 +39,7 @@ public class AvailabilityController {
 
     @DeleteMapping(path="{id}")
     public void deleteAvailabilityById(@PathVariable Long id) {
-        availabilityService.removeAvailability(id);
+        availabilityService.removeAvailabilityById(id);
     }
 
 
