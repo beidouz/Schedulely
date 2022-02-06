@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/event/{eventId}/availabilities")
+@RequestMapping(path="api/events/{eventId}/availabilities")
 public class AvailabilityController {
 
     private final AvailabilityService availabilityService;
@@ -37,8 +37,8 @@ public class AvailabilityController {
 
     @PutMapping(path="{availabilityId}")
     public void updateAvailabilityById(@RequestBody Availability availability, @PathVariable Long eventId, @PathVariable Long availabilityId) {
+        // TODO: check availability.ID == availabilityId?
         availability.setEvent(new Event(eventId, "", ""));
-        // TODO why are we not updating the availabilityID?  maybe remove ID from path?
         availabilityService.updateAvailabilityById(availability);
     }
 

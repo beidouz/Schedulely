@@ -1,6 +1,5 @@
 package com.schedulely.app.event;
 
-import com.schedulely.app.availability.Availability;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

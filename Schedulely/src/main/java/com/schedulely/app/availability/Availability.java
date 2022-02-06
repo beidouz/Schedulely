@@ -15,7 +15,7 @@ public class Availability {
     private String name;
     private LocalDate time;
     @ManyToOne
-    private Event event; // maybe just eventId?
+    private Event event;
 
     public Availability(){
 

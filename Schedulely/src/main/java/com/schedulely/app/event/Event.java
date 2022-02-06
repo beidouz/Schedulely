@@ -49,19 +49,6 @@ public class Event {
         this.description = description;
     }
 
-
-//    public void setAvailabilities(HashMap<String, Availability> availabilities) {
-//        this.availabilities = availabilities;
-//    }
-
-//    public Availability getAvailabilityByName(String name) {
-//        return this.availabilities.get(name);
-//    }
-
-//    public void setAvailabilityByName(String name, Availability availability) {
-//        this.availabilities.put(name, availability);
-//    }
-
     @Override
     public String toString() {
         return "Event{" +
