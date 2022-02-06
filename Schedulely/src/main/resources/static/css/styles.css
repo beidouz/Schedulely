@@ -1,23 +1,18 @@
 h1 {
-    font-color: red;
-    color: blue;
+    font-size: 24px;
+    color: #f1356d;
+    text-align: center;
+    align: center;
+    margin: 40px auto;
 }
 
 h2 {
-    font-family: sans-serif;
-    font-size: 1.5em;
-    text-transform: uppercase;
+    font-size: 20px;
+    color: #f1356d;
+    margin-bottom: 30px;
 }
 
-strong {
-    font-weight: 700;
-    background-color: yellow;
-}
-
-p {
-    font-family: sans-serif;
-}
-
-.nav flex-column flex-sm-row {
-    border-bottom: 5px solid red;
+.table-container {
+    margin: auto;
+    max-width: 1000px;
 }
