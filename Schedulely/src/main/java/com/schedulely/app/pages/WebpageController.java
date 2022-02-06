@@ -26,4 +26,9 @@ public class WebpageController {
         return "admin";
     }
 
+    @RequestMapping(path = "/home")
+    public String home(Model model) {
+        return "home";
+    }
+
 }
