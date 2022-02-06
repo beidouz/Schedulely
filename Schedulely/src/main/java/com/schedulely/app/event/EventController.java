@@ -33,7 +33,7 @@ public class EventController {
 
     @PutMapping(path = "{id}")
     public void updateEventById(@PathVariable Long id, @RequestBody Event event) {
-        this.eventService.updateEventById(id, event);
+        this.eventService.updateEventById(event);
     }
 
     @DeleteMapping(path = "{id}")

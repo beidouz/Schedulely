@@ -1,7 +1,10 @@
 package com.schedulely.app.availability;
 
+import com.schedulely.app.event.Event;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Entity
@@ -11,21 +14,18 @@ public class Availability {
     private Long id;  // primary key
     private String name;
     private LocalDate time;
-    //private Long eventId;
+    @ManyToOne
+    private Event event; // maybe just eventId?
 
     public Availability(){
 
     }
 
-    public Availability(String name, LocalDate time) {
-        this.name = name;
-        this.time = time;
-    }
-
-    public Availability(Long id, String name, LocalDate time) {
+    public Availability(Long id, String name, LocalDate time, Long eventId) {
         this.id = id;
         this.name = name;
         this.time = time;
+        this.event = new Event(eventId, "", "");
     }
 
     public Long getId() {
@@ -50,6 +50,14 @@ public class Availability {
 
     public void setTime(LocalDate time) {
         this.time = time;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     @Override

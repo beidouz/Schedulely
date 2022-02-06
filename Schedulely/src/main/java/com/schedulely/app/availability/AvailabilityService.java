@@ -15,26 +15,26 @@ public class AvailabilityService {
         this.availabilityRepository =  availabilityRepository;
     }
 
-    public List<Availability> getAllAvailabilities(){
+    public List<Availability> getAllAvailabilities(Long eventId){
         List<Availability> availabilities = new ArrayList<>();
-        availabilityRepository.findAll()
+        this.availabilityRepository.findByEventId(eventId)
                 .forEach(availabilities::add);
         return availabilities;
     }
 
     public Availability getAvailabilityById(Long id) {
-        return availabilityRepository.findById(id).orElse(null); //can also do .orElseThrow(() -> new EntityNotFoundException(id));
+        return this.availabilityRepository.findById(id).orElse(null); //can also do .orElseThrow(() -> new EntityNotFoundException(id));
     }
 
     public void addAvalability(Availability availability) {
-        availabilityRepository.save(availability);
+        this.availabilityRepository.save(availability);
     }
 
-    public void updateAvailabilityById(Long id, Availability availability) {
-        availabilityRepository.save(availability); //save does both post and update
+    public void updateAvailabilityById(Availability availability) {
+        this.availabilityRepository.save(availability); //save does both post and update
     }
 
     public void removeAvailabilityById(Long id) {
-        availabilityRepository.deleteById(id);
+        this.availabilityRepository.deleteById(id);
     }
 }

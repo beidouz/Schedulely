@@ -1,13 +1,14 @@
 package com.schedulely.app.availability;
 
 
+import com.schedulely.app.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/availabilities")
+@RequestMapping(path="api/event/{eventId}/availabilities")
 public class AvailabilityController {
 
     private final AvailabilityService availabilityService;
@@ -17,24 +18,28 @@ public class AvailabilityController {
         this.availabilityService = availabilityService;
     }
 
-    @GetMapping(path="{id}")
-    public Availability getAvailability(@PathVariable Long id) {
-        return availabilityService.getAvailabilityById(id);
+    @GetMapping
+    public List<Availability> getAllAvailabilities(@PathVariable Long eventId) {
+        return availabilityService.getAllAvailabilities(eventId);
     }
 
-    @GetMapping
-    public List<Availability> getAllAvailabilities() {
-        return availabilityService.getAllAvailabilities();
+    @GetMapping(path="{availabilityId}")
+    public Availability getAvailability(@PathVariable Long availabilityId) {
+        return availabilityService.getAvailabilityById(availabilityId);
     }
 
     @PostMapping
-    public void addNewAvailability(@RequestBody Availability availability) {
+    public void addAvailability(@RequestBody Availability availability, @PathVariable Long eventId) {
+        // users are not enforced to pass in the Event Id, service handles it. Initially the ID will be null, then when save is called, replaced with a real id
+        availability.setEvent(new Event(eventId, "", ""));
         availabilityService.addAvalability(availability);
     }
 
-    @PutMapping(path="{id}")
-    public void updateAvailabilityById(@PathVariable Long id, @RequestBody Availability availability) {
-        availabilityService.updateAvailabilityById(id, availability);
+    @PutMapping(path="{availabilityId}")
+    public void updateAvailabilityById(@RequestBody Availability availability, @PathVariable Long eventId, @PathVariable Long availabilityId) {
+        availability.setEvent(new Event(eventId, "", ""));
+        // TODO why are we not updating the availabilityID?  maybe remove ID from path?
+        availabilityService.updateAvailabilityById(availability);
     }
 
     @DeleteMapping(path="{id}")
