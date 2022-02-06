@@ -31,6 +31,9 @@ public class WebpageController {
         return "home";
     }
 
-
+    @RequestMapping(path={"*"})
+    public String notFound(Model model) {
+        return "not-found";
+    }
 
 }
