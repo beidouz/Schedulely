@@ -2,23 +2,37 @@ package com.schedulely.app.entities.availability;
 
 import com.schedulely.app.entities.event.Event;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 public class Availability {
 
     @Id
+    @SequenceGenerator(
+            name = "availability_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "availability_seq"
+    )
     private Long id;  // primary key
     private String name;
     private LocalDate time;
+
+    // Todo: add fk constraint to Event
     @ManyToOne
     private Event event;
 
     public Availability(){
 
+    }
+
+    public Availability(String name, LocalDate time, Long eventId) {
+        this.name = name;
+        this.time = time;
+        this.event = new Event(eventId, "", "");
     }
 
     public Availability(Long id, String name, LocalDate time, Long eventId) {

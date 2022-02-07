@@ -33,6 +33,7 @@ public class EventController {
 
     @PutMapping(path = "{id}")
     public void updateEventById(@PathVariable Long id, @RequestBody Event event) {
+        event.setId(id); //Todo: better handling
         this.eventService.updateEventById(event);
     }
 

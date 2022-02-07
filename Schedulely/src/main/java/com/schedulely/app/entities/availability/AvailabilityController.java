@@ -32,12 +32,14 @@ public class AvailabilityController {
     public void addAvailability(@RequestBody Availability availability, @PathVariable Long eventId) {
         // users are not enforced to pass in the Event Id, service handles it. Initially the ID will be null, then when save is called, replaced with a real id
         availability.setEvent(new Event(eventId, "", ""));
-        availabilityService.addAvalability(availability);
+        availabilityService.addAvailability(availability);
     }
 
     @PutMapping(path="{availabilityId}")
     public void updateAvailabilityById(@RequestBody Availability availability, @PathVariable Long eventId, @PathVariable Long availabilityId) {
+
         // TODO: check availability.ID == availabilityId?
+        availability.setId(availabilityId);
         availability.setEvent(new Event(eventId, "", ""));
         availabilityService.updateAvailabilityById(availability);
     }

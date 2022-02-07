@@ -28,7 +28,12 @@ public class EventService {
     }
 
     public void addNewEvent(Event event) {
-        this.eventRepository.save(event);
+        if (event.getId() != null && eventRepository.existsById(event.getId())){
+            // Todo: log and throw error: given event id already exist
+            System.out.printf("Error: event with id: %d already exists\n", event.getId());
+        } else {
+            this.eventRepository.save(event);
+        }
     }
 
     public void updateEventById(Event event) {
