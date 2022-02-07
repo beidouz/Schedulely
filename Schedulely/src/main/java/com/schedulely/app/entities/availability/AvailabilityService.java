@@ -1,4 +1,4 @@
-package com.schedulely.app.availability;
+package com.schedulely.app.entities.availability;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

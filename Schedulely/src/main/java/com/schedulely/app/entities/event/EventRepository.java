@@ -1,4 +1,4 @@
-package com.schedulely.app.event;
+package com.schedulely.app.entities.event;
 
 import org.springframework.data.repository.CrudRepository;
 

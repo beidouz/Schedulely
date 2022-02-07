@@ -1,6 +1,6 @@
-package com.schedulely.app.availability;
+package com.schedulely.app.entities.availability;
 
-import com.schedulely.app.event.Event;
+import com.schedulely.app.entities.event.Event;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

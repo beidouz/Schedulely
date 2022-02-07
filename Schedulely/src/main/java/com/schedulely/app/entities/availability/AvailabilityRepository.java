@@ -1,4 +1,4 @@
-package com.schedulely.app.availability;
+package com.schedulely.app.entities.availability;
 
 
 import org.springframework.data.repository.CrudRepository;

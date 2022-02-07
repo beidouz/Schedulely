@@ -1,12 +1,7 @@
-package com.schedulely.app.event;
-
-import com.schedulely.app.availability.Availability;
+package com.schedulely.app.entities.event;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.HashMap;
-import java.util.List;
 
 @Entity
 public class Event {

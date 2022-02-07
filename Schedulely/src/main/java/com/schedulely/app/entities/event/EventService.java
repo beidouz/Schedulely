@@ -1,4 +1,4 @@
-package com.schedulely.app.event;
+package com.schedulely.app.entities.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
