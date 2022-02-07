@@ -1,17 +1,29 @@
 package com.schedulely.app.entities.event;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Event {
     @Id
+    @SequenceGenerator(
+            name = "course_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "course_seq"
+    )
     private Long id; // generated unique ID
     private String title;
     private String description;
 
     public Event() {
 
+    }
+
+    public Event(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
 
     public Event(Long id, String title, String description) {
