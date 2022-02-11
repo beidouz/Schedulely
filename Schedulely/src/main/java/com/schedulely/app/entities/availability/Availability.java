@@ -3,7 +3,7 @@ package com.schedulely.app.entities.availability;
 import com.schedulely.app.entities.event.Event;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Availability {
@@ -19,7 +19,7 @@ public class Availability {
     )
     private Long id;  // primary key
     private String name;
-    private LocalDate time;
+    private LocalDateTime time;
 
     // Todo: add fk constraint to Event
     @ManyToOne
@@ -29,13 +29,13 @@ public class Availability {
 
     }
 
-    public Availability(String name, LocalDate time, Long eventId) {
+    public Availability(String name, LocalDateTime time, Long eventId) {
         this.name = name;
         this.time = time;
         this.event = new Event(eventId, "", "");
     }
 
-    public Availability(Long id, String name, LocalDate time, Long eventId) {
+    public Availability(Long id, String name, LocalDateTime time, Long eventId) {
         this.id = id;
         this.name = name;
         this.time = time;
@@ -58,11 +58,11 @@ public class Availability {
         this.name = name;
     }
 
-    public LocalDate getTime() {
+    public LocalDateTime getTime() {
         return this.time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 
