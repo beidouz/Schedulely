@@ -16,3 +16,18 @@ h2 {
     margin: auto;
     max-width: 1000px;
 }
+
+.join-button-container {
+    text-align: center;
+    align: center;
+    margin: 40px auto;
+    max-width: 400px;
+}
+
+.join-event-button {
+    width: 100%;
+}
+
+.create-event-container {
+
+}
