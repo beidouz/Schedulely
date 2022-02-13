@@ -42,9 +42,10 @@ public class WebpageController {
         return "event";
     }
 
-
-
-
+    @RequestMapping(value = "/joinEvent", method= RequestMethod.GET)
+    public String joinEvent(@ModelAttribute Event event) {
+        return "redirect:/event/" + event.getId();
+    }
 
     @RequestMapping(value = "/createEvent", method= RequestMethod.POST)
     public String createEvent(@ModelAttribute Event event) {
