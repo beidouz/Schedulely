@@ -52,4 +52,9 @@ public class WebpageController {
         this.eventService.addNewEvent(event);
         return "redirect:/event/" + event.getId();
     }
+
+    @RequestMapping(path={"*", "/error"})
+    public String notFound(Model model) {
+        return "not-found";
+    }
 }
