@@ -49,6 +49,6 @@ public class WebpageController {
     @RequestMapping(value = "/createEvent", method= RequestMethod.POST)
     public String createEvent(@ModelAttribute Event event) {
         this.eventService.addNewEvent(event);
-        return "redirect:admin"; //Todo: redirect to that event page
+        return "redirect:/event/" + event.getId();
     }
 }
