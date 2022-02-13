@@ -64,6 +64,28 @@
         </div>
     </div>
 
+    <hr/>
+
+    <!-- Create Event -->
+    <div class="create-event-container">
+        <h1> Create Event</h1>
+        <form class="create-event-form" method="post" th:object="${event}" th:action="@{/createEvent}">
+            <div class="form-group">
+                <label for="title">Event Title</label>
+                <input type="text" class="form-control" id="title" placeholder="My Event" th:field="${event.title}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" rows="3" th:field="${event.description}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="organizer">Organizer Name</label>
+                <input type="text" class="form-control" id="organizer">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

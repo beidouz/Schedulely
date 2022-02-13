@@ -28,6 +28,21 @@ h2 {
     width: 100%;
 }
 
-.create-event-container {
-
+hr {
+    max-width: 1000px;
 }
+
+.create-event-container {
+    margin: auto;
+    max-width: 1000px;
+}
+
+.create-event-form {
+    margin: auto;
+    max-width: 600px;
+}
+
+label {
+    font-weight: 600;
+}
+
