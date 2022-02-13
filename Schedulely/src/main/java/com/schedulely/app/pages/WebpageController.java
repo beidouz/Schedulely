@@ -44,7 +44,11 @@ public class WebpageController {
 
     @RequestMapping(value = "/joinEvent", method= RequestMethod.GET)
     public String joinEvent(@ModelAttribute Event event) {
-        return "redirect:/event/" + event.getId();
+        if (this.eventService.getEventById(event.getId()) != null) {
+            return "redirect:/event/" + event.getId();
+        } else {
+            return "redirect:/error";
+        }
     }
 
     @RequestMapping(value = "/createEvent", method= RequestMethod.POST)
