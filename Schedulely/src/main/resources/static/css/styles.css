@@ -9,7 +9,7 @@ h1 {
 h2 {
     font-size: 20px;
     color: #f1356d;
-    margin-bottom: 30px;
+    margin-left: 20px;
 }
 
 .table-container {
@@ -32,7 +32,7 @@ hr {
     max-width: 1000px;
 }
 
-.create-event-container {
+.create-event-container .event-container {
     margin: auto;
     max-width: 1000px;
 }

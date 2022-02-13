@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,10 +35,20 @@ public class WebpageController {
         return "home";
     }
 
+    @RequestMapping(path= "/event/{id}")
+    public String event(Model model, @PathVariable Long id) {
+        Event event = eventService.getEventById(id);
+        model.addAttribute("event", event);
+        return "event";
+    }
+
+
+
+
+
     @RequestMapping(value = "/createEvent", method= RequestMethod.POST)
     public String createEvent(@ModelAttribute Event event) {
         this.eventService.addNewEvent(event);
         return "redirect:admin"; //Todo: redirect to that event page
     }
-
 }
