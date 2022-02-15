@@ -1,5 +1,7 @@
 package com.schedulely.app.pages;
 
+import com.schedulely.app.entities.availability.Availability;
+import com.schedulely.app.entities.availability.AvailabilityService;
 import com.schedulely.app.entities.event.Event;
 import com.schedulely.app.entities.event.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,13 @@ import java.util.List;
 public class WebpageController {
 
     @Autowired
-    public WebpageController(EventService eventService) {
+    public WebpageController(EventService eventService, AvailabilityService availabilityService) {
         this.eventService = eventService;
+        this.availabilityService = availabilityService;
     }
 
     private final EventService eventService;
+    private final AvailabilityService availabilityService;
 
     @RequestMapping(path = "/admin")
     public String admin(Model model) {
@@ -38,7 +42,9 @@ public class WebpageController {
     @RequestMapping(path= "/event/{id}")
     public String event(Model model, @PathVariable Long id) {
         Event event = eventService.getEventById(id);
+        List<Availability> availabilities = availabilityService.getAllAvailabilities(id);
         model.addAttribute("event", event);
+        model.addAttribute("availabilities", availabilities);
         return "event";
     }
 

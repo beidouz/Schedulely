@@ -33,9 +33,46 @@
         </form>
     </nav>
 
-    <div class="event-container">
-        <h2>Event <span th:text="${event.id}"></span></h2>
+    <div class="event-info-container">
+        <div class="event-info-data">
+            <h2><span th:text="${event.title}"></span></h2>
+            <p><strong>Event Organizer:</strong> <span> admin </span></p>
+            <!--            <p>Event Organizer: <span th:text="${event.organizer}"> null </span></p>-->
+            <p><span th:text="${event.description}"></span></p>
+
+        </div>
     </div>
+
+    <hr/>
+
+    <div class="event-availabilities-container">
+        <h1> Availabilities</h1>
+
+        <div class="tb">
+            <table class="table table-hover availability-table">
+                <thead class="Light">
+                    <tr>
+                        <th scope="col" style="border-color: #B1E1FD;">Name</th>
+                        <th scope="col" style="border-color: #B1E1FD;">Available Time</th>
+    <!--                    <th scope="col">Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="availability : ${availabilities}" >
+                        <td th:text="${availability.name}" style="border-color: #B1E1FD;"></td>
+                        <td th:text="${availability.time}" style="border-color: #B1E1FD;"></td>
+    <!--                    <td>-->
+    <!--                        <button type="button" class="btn btn-primary">Edit</button>-->
+    <!--                    </td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr/>
+
+        <h2> Add Entry</h2>
+    </div>
+
 
 
 </body>
