@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -43,8 +44,10 @@ public class WebpageController {
     public String event(Model model, @PathVariable Long id) {
         Event event = eventService.getEventById(id);
         List<Availability> availabilities = availabilityService.getAllAvailabilities(id);
+        Availability availability = new Availability("", LocalDateTime.of(2022, 1, 1, 0, 0, 0), id);
         model.addAttribute("event", event);
         model.addAttribute("availabilities", availabilities);
+        model.addAttribute("availability", availability);
         return "event";
     }
 
@@ -61,6 +64,13 @@ public class WebpageController {
     public String createEvent(@ModelAttribute Event event) {
         this.eventService.addNewEvent(event);
         return "redirect:/event/" + event.getId();
+    }
+
+    @RequestMapping(value = "/addAvailability/{eventId}", method= RequestMethod.POST)
+    public String addAvailability(@ModelAttribute Availability availability, @PathVariable Long eventId) {
+        availability.setEvent(new Event(eventId, "", ""));
+        this.availabilityService.addAvailability(availability);
+        return "redirect:/event/" + eventId;
     }
 
     @RequestMapping(path={"*", "/error"})

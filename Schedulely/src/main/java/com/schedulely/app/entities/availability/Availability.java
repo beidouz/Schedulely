@@ -1,6 +1,7 @@
 package com.schedulely.app.entities.availability;
 
 import com.schedulely.app.entities.event.Event;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,9 +20,10 @@ public class Availability {
     )
     private Long id;  // primary key
     private String name;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime time;
 
-    // Todo: add fk constraint to Event
     @ManyToOne
     private Event event;
 

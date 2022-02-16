@@ -54,25 +54,39 @@
                     <tr>
                         <th scope="col" style="border-color: #B1E1FD;">Name</th>
                         <th scope="col" style="border-color: #B1E1FD;">Available Time</th>
-    <!--                    <th scope="col">Actions</th>-->
+                        <th scope="col" style="border-color: #B1E1FD;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="availability : ${availabilities}" >
                         <td th:text="${availability.name}" style="border-color: #B1E1FD;"></td>
                         <td th:text="${availability.time}" style="border-color: #B1E1FD;"></td>
-    <!--                    <td>-->
-    <!--                        <button type="button" class="btn btn-primary">Edit</button>-->
-    <!--                    </td>-->
+                        <td style="border-color: #B1E1FD;">
+                            <button type="button" class="btn btn-primary">Edit</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
         <hr/>
 
-        <h2> Add Entry</h2>
-    </div>
+        <div class="add-availability-container">
+            <h2> Add Entry</h2>
+            <form class="row g-3" method="post" th:object="${availability}" th:action="@{/addAvailability/} + ${event.id}">
+                <div class="col-sm">
+                    <input id="name" type="text" class="form-control" placeholder="Name" th:field="${availability.name}">
+                </div>
+                <div class="col-sm">
+                    <input type="datetime-local" class="form-control" value="2022-01-01T08:30" th:field="${availability.time}">
+                </div>
+                <div class="col-sm">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
 
+    </div>
 
 
 </body>

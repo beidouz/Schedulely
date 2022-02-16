@@ -35,7 +35,7 @@ public class AvailabilityService {
         if (!eventRepository.existsById(availability.getEvent().getId())){
             // Todo: log and throw error: event should exist
             System.out.printf("Error: event with id %d does not exist", availability.getEvent().getId());
-        } else if (availabilityRepository.existsById(availability.getId())){
+        } else if (availability.getId() != null && availabilityRepository.existsById(availability.getId())){
             // Todo: log and throw error: availability with given id should not exist
             System.out.printf("Error: availability with id %d does not exist", availability.getEvent().getId());
         } else {
