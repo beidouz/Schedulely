@@ -54,16 +54,16 @@
                     <tr>
                         <th scope="col" style="border-color: #B1E1FD;">Name</th>
                         <th scope="col" style="border-color: #B1E1FD;">Available Time</th>
-                        <th scope="col" style="border-color: #B1E1FD;">Actions</th>
+<!--                        <th scope="col" style="border-color: #B1E1FD;">Actions</th>-->
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="availability : ${availabilities}" >
                         <td th:text="${availability.name}" style="border-color: #B1E1FD;"></td>
                         <td th:text="${availability.time}" style="border-color: #B1E1FD;"></td>
-                        <td style="border-color: #B1E1FD;">
-                            <button type="button" class="btn btn-primary">Edit</button>
-                        </td>
+<!--                        <td style="border-color: #B1E1FD;">-->
+<!--                            <button type="button" class="btn btn-primary">Edit</button>-->
+<!--                        </td>-->
                     </tr>
                 </tbody>
             </table>
