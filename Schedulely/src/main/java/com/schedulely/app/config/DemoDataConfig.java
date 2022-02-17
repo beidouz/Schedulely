@@ -8,7 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Arrays;
 
 @Configuration
@@ -24,8 +24,8 @@ public class DemoDataConfig {
                     Arrays.asList(e1, e2, e3)
             );
 
-            Availability e1a1 = new Availability("Bob", LocalDateTime.of(2022, 2, 11, 20, 30, 0), 1L);
-            Availability e1a2 = new Availability("Doug", LocalDateTime.of(2020, 2, 11, 21, 00, 0), 1L);
+            Availability e1a1 = new Availability("Bob", LocalTime.of(20, 30, 0), 1L);
+            Availability e1a2 = new Availability("Doug", LocalTime.of(21, 00, 0), 1L);
             availabilityRepository.saveAll(
                     Arrays.asList(e1a1, e1a2)
             );

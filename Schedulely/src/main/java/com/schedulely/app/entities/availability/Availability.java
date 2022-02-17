@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 public class Availability {
@@ -22,8 +22,8 @@ public class Availability {
     private Long id;  // primary key
     private String name;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime time;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    private LocalTime time;
 
     @ManyToOne
     private Event event;
@@ -32,13 +32,13 @@ public class Availability {
 
     }
 
-    public Availability(String name, LocalDateTime time, Long eventId) {
+    public Availability(String name, LocalTime time, Long eventId) {
         this.name = name;
         this.time = time;
         this.event = new Event(eventId, "", "");
     }
 
-    public Availability(Long id, String name, LocalDateTime time, Long eventId) {
+    public Availability(Long id, String name, LocalTime time, Long eventId) {
         this.id = id;
         this.name = name;
         this.time = time;
@@ -61,11 +61,11 @@ public class Availability {
         this.name = name;
     }
 
-    public LocalDateTime getTime() {
+    public LocalTime getTime() {
         return this.time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 

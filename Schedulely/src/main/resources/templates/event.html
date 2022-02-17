@@ -60,8 +60,8 @@
                 <tbody>
                     <tr th:each="availability : ${availabilities}" >
                         <td th:text="${availability.name}" style="border-color: #B1E1FD;"></td>
-                        <td th:text="${#temporals.format(availability.time, 'hh:mm a')}" style="border-color: #B1E1FD;"></td>
-<!--                        <td th:text="${#temporals.format(availability.time, 'dd-MM-yyyy HH:mm')}" style="border-color: #B1E1FD;"></td>-->
+<!--                        <td th:text="${#temporals.format(availability.time, 'hh:mm a')}" style="border-color: #B1E1FD;"></td>-->
+                        <td th:text="${#temporals.format(availability.time, 'HH:mm')}" style="border-color: #B1E1FD;"></td>
                         <!--                        <td style="border-color: #B1E1FD;">-->
 <!--                            <button type="button" class="btn btn-primary">Edit</button>-->
 <!--                        </td>-->
@@ -79,7 +79,7 @@
                     <input id="name" type="text" class="form-control" placeholder="Name" th:field="${availability.name}">
                 </div>
                 <div class="col-sm">
-                    <input type="datetime-local" class="form-control" value="2022-01-01T08:30" th:field="${availability.time}">
+                    <input type="time" class="form-control"  th:field="${availability.time}">
                 </div>
                 <div class="col-sm">
                     <button type="submit" class="btn btn-primary">Submit</button>

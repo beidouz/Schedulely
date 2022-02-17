@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Controller
@@ -44,7 +44,7 @@ public class WebpageController {
     public String event(Model model, @PathVariable Long id) {
         Event event = eventService.getEventById(id);
         List<Availability> availabilities = availabilityService.getAllAvailabilities(id);
-        Availability availability = new Availability("", LocalDateTime.of(2022, 1, 1, 0, 0, 0), id);
+        Availability availability = new Availability("", LocalTime.of(0, 0, 0), id);
         model.addAttribute("event", event);
         model.addAttribute("availabilities", availabilities);
         model.addAttribute("availability", availability);
