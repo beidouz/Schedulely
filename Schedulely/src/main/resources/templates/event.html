@@ -60,9 +60,8 @@
                 <tbody>
                     <tr th:each="availability : ${availabilities}" >
                         <td th:text="${availability.name}" style="border-color: #B1E1FD;"></td>
-<!--                        <td th:text="${#temporals.format(availability.time, 'hh:mm a')}" style="border-color: #B1E1FD;"></td>-->
-                        <td th:text="${#temporals.format(availability.time, 'HH:mm')}" style="border-color: #B1E1FD;"></td>
-                        <!--                        <td style="border-color: #B1E1FD;">-->
+                        <td th:text="${#temporals.format(availability.time, 'hh:mm a')}" style="border-color: #B1E1FD;"></td>
+<!--                        <td style="border-color: #B1E1FD;">-->
 <!--                            <button type="button" class="btn btn-primary">Edit</button>-->
 <!--                        </td>-->
                     </tr>
@@ -86,10 +85,7 @@
                 </div>
             </form>
         </div>
-
     </div>
-
-
 </body>
 
 </html>
