@@ -16,20 +16,34 @@ public class Event {
     private Long id; // generated unique ID
     private String title;
     private String description;
+    private String ownerName;
+    private String ownerEmail;
 
     public Event() {
 
     }
 
-    public Event(String title, String description) {
-        this.title = title;
-        this.description = description;
+    public Event(Long id) {
+        this.id = id;
+        this.title = "";
+        this.description = "";
+        this.ownerName = "";
+        this.ownerEmail = "";
     }
 
-    public Event(Long id, String title, String description) {
+    public Event(String title, String description, String ownerName, String ownerEmail) {
+        this.title = title;
+        this.description = description;
+        this.ownerName = ownerName;
+        this.ownerEmail = ownerEmail;
+    }
+
+    public Event(Long id, String title, String description, String ownerName, String ownerEmail) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.ownerName = ownerName;
+        this.ownerEmail = ownerEmail;
     }
 
     public Long getId() {
@@ -54,6 +68,22 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public String getOwnerEmail() {
+        return ownerEmail;
+    }
+
+    public void setOwnerEmail(String ownerEmail) {
+        this.ownerEmail = ownerEmail;
     }
 
     @Override
