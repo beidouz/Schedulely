@@ -1,6 +1,7 @@
 package com.schedulely.app.entities.availability;
 
 import com.schedulely.app.entities.event.Event;
+import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;

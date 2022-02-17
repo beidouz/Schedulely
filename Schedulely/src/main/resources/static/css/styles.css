@@ -102,3 +102,7 @@ label {
     max-width: 800px;
     padding: 10px;
 }
+
+.center-text {
+    text-align: center;
+}
