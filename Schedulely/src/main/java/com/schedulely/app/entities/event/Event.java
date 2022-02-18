@@ -1,6 +1,9 @@
 package com.schedulely.app.entities.event;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Event {
@@ -18,6 +21,8 @@ public class Event {
     private String description;
     private String ownerName;
     private String ownerEmail;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate date; //yyyy-MM-dd
 
     public Event() {
 
@@ -29,21 +34,24 @@ public class Event {
         this.description = "";
         this.ownerName = "";
         this.ownerEmail = "";
+        this.date = null;
     }
 
-    public Event(String title, String description, String ownerName, String ownerEmail) {
+    public Event(String title, String description, String ownerName, String ownerEmail, LocalDate date) {
         this.title = title;
         this.description = description;
         this.ownerName = ownerName;
         this.ownerEmail = ownerEmail;
+        this.date = date;
     }
 
-    public Event(Long id, String title, String description, String ownerName, String ownerEmail) {
+    public Event(Long id, String title, String description, String ownerName, String ownerEmail, LocalDate date) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.ownerName = ownerName;
         this.ownerEmail = ownerEmail;
+        this.date = date;
     }
 
     public Long getId() {
@@ -84,6 +92,14 @@ public class Event {
 
     public void setOwnerEmail(String ownerEmail) {
         this.ownerEmail = ownerEmail;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override

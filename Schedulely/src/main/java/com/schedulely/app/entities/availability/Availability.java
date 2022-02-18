@@ -23,7 +23,7 @@ public class Availability {
     private String name;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime time;
+    private LocalTime time; // HH:mm:ss
 
     @ManyToOne
     private Event event;
