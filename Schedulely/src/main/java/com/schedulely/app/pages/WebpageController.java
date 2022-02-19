@@ -73,8 +73,4 @@ public class WebpageController {
         return "redirect:/event/" + eventId;
     }
 
-    @RequestMapping(path={"*", "/error"})
-    public String notFound(Model model) {
-        return "not-found";
-    }
 }
