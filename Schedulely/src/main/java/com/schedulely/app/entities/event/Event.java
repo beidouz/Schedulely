@@ -45,15 +45,6 @@ public class Event {
         this.date = date;
     }
 
-    public Event(Long id, String title, String description, String ownerName, String ownerEmail, LocalDate date) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.ownerName = ownerName;
-        this.ownerEmail = ownerEmail;
-        this.date = date;
-    }
-
     public Long getId() {
         return this.id;
     }

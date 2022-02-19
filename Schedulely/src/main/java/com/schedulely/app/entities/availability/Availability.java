@@ -38,13 +38,6 @@ public class Availability {
         this.event = new Event(eventId);
     }
 
-    public Availability(Long id, String name, LocalTime time, Long eventId) {
-        this.id = id;
-        this.name = name;
-        this.time = time;
-        this.event = new Event(eventId);
-    }
-
     public Long getId() {
         return this.id;
     }
