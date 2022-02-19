@@ -26,11 +26,7 @@ mvn spring-boot:run
 
 ## View the application 
 
-Home page `http://schedulely.us-east-2.elasticbeanstalk.com/home`
-
-Admin page `http://schedulely.us-east-2.elasticbeanstalk.com/admin`
-
-Swagger UI `http://schedulely.us-east-2.elasticbeanstalk.com/swagger-ui.html#/`
+http://schedulely.us-east-2.elasticbeanstalk.com/
 
 ## View the application locally
 
