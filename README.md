@@ -5,6 +5,9 @@
 
 Minimal [Spring Boot](http://projects.spring.io/spring-boot/) sample app.
 
+## Live Application deployed on AWS
+- [Schedulely](http://schedulely.us-east-2.elasticbeanstalk.com/home)
+
 ## Requirements
 
 For building and running the application you need:
@@ -23,10 +26,6 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 ```shell
 mvn spring-boot:run
 ```
-
-## View the application 
-
-http://schedulely.us-east-2.elasticbeanstalk.com/
 
 ## View the application locally
 
