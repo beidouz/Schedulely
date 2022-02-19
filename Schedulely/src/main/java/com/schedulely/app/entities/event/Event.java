@@ -1,6 +1,9 @@
 package com.schedulely.app.entities.event;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Event {
@@ -16,20 +19,39 @@ public class Event {
     private Long id; // generated unique ID
     private String title;
     private String description;
+    private String ownerName;
+    private String ownerEmail;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate date; //yyyy-MM-dd
 
     public Event() {
 
     }
 
-    public Event(String title, String description) {
-        this.title = title;
-        this.description = description;
+    public Event(Long id) {
+        this.id = id;
+        this.title = "";
+        this.description = "";
+        this.ownerName = "";
+        this.ownerEmail = "";
+        this.date = null;
     }
 
-    public Event(Long id, String title, String description) {
+    public Event(String title, String description, String ownerName, String ownerEmail, LocalDate date) {
+        this.title = title;
+        this.description = description;
+        this.ownerName = ownerName;
+        this.ownerEmail = ownerEmail;
+        this.date = date;
+    }
+
+    public Event(Long id, String title, String description, String ownerName, String ownerEmail, LocalDate date) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.ownerName = ownerName;
+        this.ownerEmail = ownerEmail;
+        this.date = date;
     }
 
     public Long getId() {
@@ -54,6 +76,30 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public String getOwnerEmail() {
+        return ownerEmail;
+    }
+
+    public void setOwnerEmail(String ownerEmail) {
+        this.ownerEmail = ownerEmail;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override

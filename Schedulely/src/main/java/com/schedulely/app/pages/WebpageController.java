@@ -68,7 +68,7 @@ public class WebpageController {
 
     @RequestMapping(value = "/addAvailability/{eventId}", method= RequestMethod.POST)
     public String addAvailability(@ModelAttribute Availability availability, @PathVariable Long eventId) {
-        availability.setEvent(new Event(eventId, "", ""));
+        availability.setEvent(new Event(eventId));
         this.availabilityService.addAvailability(availability);
         return "redirect:/event/" + eventId;
     }

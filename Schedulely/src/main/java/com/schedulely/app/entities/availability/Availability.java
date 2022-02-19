@@ -23,7 +23,7 @@ public class Availability {
     private String name;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private LocalTime time;
+    private LocalTime time; // HH:mm:ss
 
     @ManyToOne
     private Event event;
@@ -35,14 +35,14 @@ public class Availability {
     public Availability(String name, LocalTime time, Long eventId) {
         this.name = name;
         this.time = time;
-        this.event = new Event(eventId, "", "");
+        this.event = new Event(eventId);
     }
 
     public Availability(Long id, String name, LocalTime time, Long eventId) {
         this.id = id;
         this.name = name;
         this.time = time;
-        this.event = new Event(eventId, "", "");
+        this.event = new Event(eventId);
     }
 
     public Long getId() {
