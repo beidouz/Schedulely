@@ -18,9 +18,9 @@ public class DemoDataConfig {
     @Bean
     CommandLineRunner commandLineRunner(EventRepository eventRepository, AvailabilityRepository availabilityRepository) {
         return args -> {
-            Event e1 = new Event("Move night", "Lets set a time to watch the movie tonight! When is everyone available?", "WIlliam", "will@hotmail.com", LocalDate.now());
-            Event e2 = new Event("Team Meeting", "Hey team, lets set a time to meet tomorrow in preparation for the game this weekend.", "zhang", "zhang@hotmail.com", LocalDate.now());
-            Event e3 = new Event("Fishing", "when can yall get up tmr?", "Jack Ma", "jackma@gmail.com", LocalDate.now());
+            Event e1 = new Event("Move night", "Lets set a time to watch the movie tonight! When is everyone available?", "WIlliam", "will@hotmail.com", LocalDate.now(), "discord.com/asdf");
+            Event e2 = new Event("Team Meeting", "Hey team, lets set a time to meet tomorrow in preparation for the game this weekend.", "zhang", "zhang@hotmail.com", LocalDate.now(), "zoom.ca/asdf");
+            Event e3 = new Event("Fishing", "when can yall get up tmr?", "Jack Ma", "jackma@gmail.com", LocalDate.now(),"discord/123123");
             eventRepository.saveAll(
                     Arrays.asList(e1, e2, e3)
             );

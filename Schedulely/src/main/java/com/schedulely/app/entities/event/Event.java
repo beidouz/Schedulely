@@ -23,6 +23,7 @@ public class Event {
     private String ownerEmail;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date; //yyyy-MM-dd
+    private String location;
 
     public Event() {
 
@@ -35,14 +36,16 @@ public class Event {
         this.ownerName = "";
         this.ownerEmail = "";
         this.date = null;
+        this.location = "";
     }
 
-    public Event(String title, String description, String ownerName, String ownerEmail, LocalDate date) {
+    public Event(String title, String description, String ownerName, String ownerEmail, LocalDate date, String location) {
         this.title = title;
         this.description = description;
         this.ownerName = ownerName;
         this.ownerEmail = ownerEmail;
         this.date = date;
+        this.location = location;
     }
 
     public Long getId() {
@@ -91,6 +94,14 @@ public class Event {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     @Override
