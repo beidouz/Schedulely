@@ -24,6 +24,14 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 mvn spring-boot:run
 ```
 
+## View the application 
+
+Home page `http://schedulely.us-east-2.elasticbeanstalk.com/home`
+
+Admin page `http://schedulely.us-east-2.elasticbeanstalk.com/admin`
+
+Swagger UI `http://schedulely.us-east-2.elasticbeanstalk.com/swagger-ui.html#/`
+
 ## View the application locally
 
 Home page `http://localhost:8080/home` 
