@@ -24,6 +24,7 @@ public class Event {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date; //yyyy-MM-dd
     private String location;
+    private String urlId;
 
     public Event() {
 
@@ -37,6 +38,7 @@ public class Event {
         this.ownerEmail = "";
         this.date = null;
         this.location = "";
+        this.urlId = "";
     }
 
     public Event(String title, String description, String ownerName, String ownerEmail, LocalDate date, String location) {
@@ -46,6 +48,7 @@ public class Event {
         this.ownerEmail = ownerEmail;
         this.date = date;
         this.location = location;
+        this.urlId = "";
     }
 
     public Long getId() {
@@ -102,6 +105,14 @@ public class Event {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getUrlId() {
+        return urlId;
+    }
+
+    public void setUrlId(String urlId) {
+        this.urlId = urlId;
     }
 
     @Override
