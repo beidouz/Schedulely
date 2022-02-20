@@ -1,5 +1,6 @@
 package com.schedulely.app.entities.event;
 
+import com.schedulely.app.utilities.UrlFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,10 @@ public class EventService {
             // Todo: log and throw error: given event id already exist
             System.out.printf("Error: event with id: %d already exists\n", event.getId());
         } else {
+            this.eventRepository.save(event);   //TODO: avoid duplicate save
+            System.out.println("setting url ID ");
+            String urlId = UrlFactory.getInstance().encode(event.getId());
+            event.setUrlId(urlId);
             this.eventRepository.save(event);
         }
     }
