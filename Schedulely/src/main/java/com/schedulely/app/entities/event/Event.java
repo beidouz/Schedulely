@@ -8,14 +8,8 @@ import java.time.LocalDate;
 @Entity
 public class Event {
     @Id
-    @SequenceGenerator(
-            name = "course_seq",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "course_seq"
-    )
+    @SequenceGenerator(name = "event_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
     private Long id; // generated unique ID
     private String title;
     private String description;

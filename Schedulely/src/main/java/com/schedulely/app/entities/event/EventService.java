@@ -38,7 +38,6 @@ public class EventService {
             System.out.printf("Error: event with id: %d already exists\n", event.getId());
         } else {
             this.eventRepository.save(event);   //TODO: avoid duplicate save
-            System.out.println("setting url ID ");
             String urlId = UrlFactory.getInstance().encode(event.getId());
             event.setUrlId(urlId);
             this.eventRepository.save(event);

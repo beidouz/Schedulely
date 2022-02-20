@@ -11,14 +11,8 @@ import java.time.LocalTime;
 public class Availability {
 
     @Id
-    @SequenceGenerator(
-            name = "availability_seq",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "availability_seq"
-    )
+    @SequenceGenerator(name = "availability_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "availability_seq")
     private Long id;  // primary key
     private String name;
 
