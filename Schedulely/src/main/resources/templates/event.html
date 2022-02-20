@@ -73,7 +73,7 @@
 
         <div class="add-availability-container">
             <h2> Add Entry</h2>
-            <form class="row g-3" method="post" th:object="${availability}" th:action="@{/addAvailability/} + ${event.id}">
+            <form class="row g-3" method="post" th:object="${availability}" th:action="@{/addAvailability/} + ${event.urlId}">
                 <div class="col-sm">
                     <input id="name" type="text" class="form-control" placeholder="Name" th:field="${availability.name}">
                 </div>

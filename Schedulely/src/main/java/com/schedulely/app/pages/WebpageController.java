@@ -40,11 +40,11 @@ public class WebpageController {
         return "home";
     }
 
-    @RequestMapping(path= "/event/{id}")
-    public String event(Model model, @PathVariable Long id) {
-        Event event = eventService.getEventById(id);
-        List<Availability> availabilities = availabilityService.getAllAvailabilities(id);
-        Availability availability = new Availability("", LocalTime.of(0, 0, 0), id);
+    @RequestMapping(path= "/event/{urlId}")
+    public String event(Model model, @PathVariable String urlId) {
+        Event event = eventService.getEventByUrlId(urlId);
+        List<Availability> availabilities = availabilityService.getAllAvailabilities(event.getId());
+        Availability availability = new Availability("", LocalTime.of(0, 0, 0), event.getId());
         model.addAttribute("event", event);
         model.addAttribute("availabilities", availabilities);
         model.addAttribute("availability", availability);
@@ -53,8 +53,8 @@ public class WebpageController {
 
     @RequestMapping(value = "/joinEvent", method= RequestMethod.GET)
     public String joinEvent(@ModelAttribute Event event) {
-        if (this.eventService.getEventById(event.getId()) != null) {
-            return "redirect:/event/" + event.getId();
+        if (this.eventService.getEventByUrlId(event.getUrlId()) != null) {
+            return "redirect:/event/" + event.getUrlId();
         } else {
             return "redirect:/error";
         }
@@ -63,14 +63,15 @@ public class WebpageController {
     @RequestMapping(value = "/createEvent", method= RequestMethod.POST)
     public String createEvent(@ModelAttribute Event event) {
         this.eventService.addNewEvent(event);
-        return "redirect:/event/" + event.getId();
+        return "redirect:/event/" + event.getUrlId();
     }
 
-    @RequestMapping(value = "/addAvailability/{eventId}", method= RequestMethod.POST)
-    public String addAvailability(@ModelAttribute Availability availability, @PathVariable Long eventId) {
+    @RequestMapping(value = "/addAvailability/{eventUrlId}", method= RequestMethod.POST)
+    public String addAvailability(@ModelAttribute Availability availability, @PathVariable String eventUrlId) {
+        Long eventId = this.eventService.getEventByUrlId(eventUrlId).getId();
         availability.setEvent(new Event(eventId));
         this.availabilityService.addAvailability(availability);
-        return "redirect:/event/" + eventId;
+        return "redirect:/event/" + eventUrlId;
     }
 
 }
