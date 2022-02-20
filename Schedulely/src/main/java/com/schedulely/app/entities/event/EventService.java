@@ -21,6 +21,10 @@ public class EventService {
         return this.eventRepository.findById(id).orElse(null);
     }
 
+    public Event getEventByUrlId(String urlId) {
+        return this.eventRepository.findByUrlId(urlId);
+    }
+
     public List<Event> getAllEvents(){
         List<Event> events = new ArrayList<>();
         eventRepository.findAll()

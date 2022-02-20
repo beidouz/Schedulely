@@ -17,8 +17,13 @@ public class EventController {
     }
 
     @GetMapping(path = "{id}")
-    public Event getEvent(@PathVariable Long id) {
+    public Event getEventById(@PathVariable Long id) {
         return eventService.getEventById(id);
+    }
+
+    @GetMapping(path = "/shared/{urlId}")
+    public Event getEventByUrlId(@PathVariable String urlId) {
+        return eventService.getEventByUrlId(urlId);
     }
 
     @GetMapping
