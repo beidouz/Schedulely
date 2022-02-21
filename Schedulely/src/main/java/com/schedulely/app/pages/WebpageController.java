@@ -1,9 +1,9 @@
 package com.schedulely.app.pages;
 
 import com.schedulely.app.entities.availability.Availability;
-import com.schedulely.app.entities.availability.AvailabilityService;
+import com.schedulely.app.entities.availability.AvailabilityController;
 import com.schedulely.app.entities.event.Event;
-import com.schedulely.app.entities.event.EventService;
+import com.schedulely.app.entities.event.EventController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,18 +18,18 @@ import java.util.List;
 @Controller
 public class WebpageController {
 
-    @Autowired
-    public WebpageController(EventService eventService, AvailabilityService availabilityService) {
-        this.eventService = eventService;
-        this.availabilityService = availabilityService;
-    }
+    private final EventController eventController;
+    private final AvailabilityController availabilityController;
 
-    private final EventService eventService;
-    private final AvailabilityService availabilityService;
+    @Autowired
+    public WebpageController(EventController eventController, AvailabilityController availabilityController) {
+        this.eventController = eventController;
+        this.availabilityController = availabilityController;
+    }
 
     @RequestMapping(path = "/admin")
     public String admin(Model model) {
-        List<Event> events = eventService.getAllEvents();
+        List<Event> events = eventController.getAllEvents();
         model.addAttribute("events", events);
         return "admin";
     }
@@ -42,8 +42,8 @@ public class WebpageController {
 
     @RequestMapping(path= "/event/{urlId}")
     public String event(Model model, @PathVariable String urlId) {
-        Event event = eventService.getEventByUrlId(urlId);
-        List<Availability> availabilities = availabilityService.getAllAvailabilities(event.getId());
+        Event event = eventController.getEventByUrlId(urlId);
+        List<Availability> availabilities = availabilityController.getAllAvailabilities(event.getId());
         Availability availability = new Availability("", LocalTime.of(0, 0, 0), event.getId());
         model.addAttribute("event", event);
         model.addAttribute("availabilities", availabilities);
@@ -53,7 +53,7 @@ public class WebpageController {
 
     @RequestMapping(value = "/joinEvent", method= RequestMethod.GET)
     public String joinEvent(@ModelAttribute Event event) {
-        if (this.eventService.getEventByUrlId(event.getUrlId()) != null) {
+        if (this.eventController.getEventByUrlId(event.getUrlId()) != null) {
             return "redirect:/event/" + event.getUrlId();
         } else {
             return "redirect:/error";
@@ -62,15 +62,14 @@ public class WebpageController {
 
     @RequestMapping(value = "/createEvent", method= RequestMethod.POST)
     public String createEvent(@ModelAttribute Event event) {
-        this.eventService.addNewEvent(event);
+        this.eventController.addNewEvent(event);
         return "redirect:/event/" + event.getUrlId();
     }
 
     @RequestMapping(value = "/addAvailability/{eventUrlId}", method= RequestMethod.POST)
     public String addAvailability(@ModelAttribute Availability availability, @PathVariable String eventUrlId) {
-        Long eventId = this.eventService.getEventByUrlId(eventUrlId).getId();
-        availability.setEvent(new Event(eventId));
-        this.availabilityService.addAvailability(availability);
+        Long eventId = this.eventController.getEventByUrlId(eventUrlId).getId();
+        this.availabilityController.addAvailability(availability, eventId);
         return "redirect:/event/" + eventUrlId;
     }
 
