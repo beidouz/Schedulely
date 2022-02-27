@@ -36,7 +36,13 @@
     <div class="event-info-container">
         <div class="event-info-data">
             <h2><span th:text="${event.title}"></span></h2>
-            <p><strong>Event Organizer:</strong> <span th:text="${event.ownerName}"> null </span></p>
+            <p><strong>Organizer:</strong> <span th:text="${event.ownerName}"> null </span></p>
+            <p><strong>Date:</strong> <span th:text="${event.date}"> null </span></p>
+            <p><strong>Location:</strong>
+                <a th:href="'//' + ${event.location}">
+                    <span th:text=" ${event.location}">  </span>
+                 </a>
+            </p>
             <p><span th:text="${event.description}"></span></p>
 
         </div>
