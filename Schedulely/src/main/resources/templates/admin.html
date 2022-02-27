@@ -57,7 +57,9 @@
                     <td th:text="${event.description}"></td>
 <!--                    <td th:text="${event.availabilities.size()}"></td>-->
                     <td>
-                        <button type="button" class="btn btn-primary">Open</button>
+                        <a th:href="'./event/' + ${event.urlId}">
+                            <button type="button" class="btn btn-primary">Open</button>
+                        </a>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
