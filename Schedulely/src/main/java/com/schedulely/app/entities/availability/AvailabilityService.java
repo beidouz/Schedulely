@@ -1,5 +1,6 @@
 package com.schedulely.app.entities.availability;
 
+import com.schedulely.app.entities.event.Event;
 import com.schedulely.app.entities.event.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,12 @@ public class AvailabilityService {
             System.out.printf("Error: availability with id %d does not exist", availability.getEvent().getId());
         } else {
             this.availabilityRepository.save(availability);
+        }
+    }
+
+    public void addMultipleAvailabilities(List<Availability> availabilities) {
+        for (Availability availability : availabilities) {
+            addAvailability(availability);
         }
     }
 

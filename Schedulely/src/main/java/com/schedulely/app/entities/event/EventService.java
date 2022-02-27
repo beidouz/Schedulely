@@ -44,6 +44,12 @@ public class EventService {
         }
     }
 
+    public void addMultipleEvents(List<Event> events) {
+        for (Event event : events) {
+            addNewEvent(event);
+        }
+    }
+
     public void updateEventById(Event event) {
         this.eventRepository.save(event);
     }
