@@ -1,6 +1,7 @@
 package com.schedulely.app.entities.availability;
 
 import com.schedulely.app.entities.event.Event;
+import com.sun.istack.NotNull;
 import org.springframework.data.jpa.repository.Temporal;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -14,9 +15,11 @@ public class Availability {
     @SequenceGenerator(name = "availability_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "availability_seq")
     private Long id;  // primary key
+    @NotNull
     private String name;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @NotNull
     private LocalTime time; // HH:mm:ss
 
     @ManyToOne

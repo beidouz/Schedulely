@@ -1,5 +1,6 @@
 package com.schedulely.app.entities.event;
 
+import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -11,13 +12,18 @@ public class Event {
     @SequenceGenerator(name = "event_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "event_seq")
     private Long id; // generated unique ID
+    @NotNull
     private String title;
     private String description;
+    @NotNull
     private String ownerName;
+    @NotNull
     private String ownerEmail;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date; //yyyy-MM-dd
     private String location;
+    @Column(unique=true)
+    @NotNull
     private String urlId;
 
     public Event() {
