@@ -6,7 +6,7 @@
 Minimal [Spring Boot](http://projects.spring.io/spring-boot/) sample app.
 
 ## Live Application deployed on AWS
-- [Schedulely](http://schedulely.us-east-2.elasticbeanstalk.com/home)
+[Schedulely](http://schedulely.us-east-2.elasticbeanstalk.com/home)
 
 ## Requirements
 
